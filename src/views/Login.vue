@@ -1,5 +1,8 @@
 <template>
-  <input id="userId" />
+  <div>
+    <input id="userId" />
+    <input type="password" />
+  </div>
 </template>
 
 <script>
