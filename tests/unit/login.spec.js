@@ -23,4 +23,20 @@ describe('Login.vue', () => {
     userInput.setValue('')
     expect(wrapper.vm.$v.$invalid).toBe(true)
   })
+
+  it('should required user and password must be success', () => {
+    const localVue = createLocalVue()
+    localVue.use(Vuelidate)
+
+    const wrapper = shallowMount(Login, {
+      localVue
+    })
+    const userInput = wrapper.find('#userId')
+    userInput.setValue('admin')
+
+    const passwordInput = wrapper.find('input[type=password]')
+    passwordInput.setValue('admin')
+
+    expect(wrapper.vm.$v.$invalid).toBe(false)
+  })
 })
