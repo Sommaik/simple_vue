@@ -1,10 +1,18 @@
 import Login from '@/views/Login.vue'
-import { shallowMount, createLocalVue } from '@vue/test-utils'
+import { mount, createLocalVue } from '@vue/test-utils'
 import Vuelidate from 'vuelidate'
+import BootstrapVue from 'bootstrap-vue'
 
 describe('Login.vue', () => {
+  const localVue = createLocalVue()
+
+  beforeAll(() => {
+    localVue.use(Vuelidate)
+    localVue.use(BootstrapVue)
+  })
+
   it('should have input and password', () => {
-    const wrapper = shallowMount(Login)
+    const wrapper = mount(Login, { localVue })
     const userInput = wrapper.find('#userId')
     expect(userInput.exists()).toBe(true)
 
@@ -13,10 +21,7 @@ describe('Login.vue', () => {
   })
 
   it('should required user and password must be fail.', () => {
-    const localVue = createLocalVue()
-    localVue.use(Vuelidate)
-
-    const wrapper = shallowMount(Login, {
+    const wrapper = mount(Login, {
       localVue
     })
     const userInput = wrapper.find('#userId')
@@ -25,10 +30,7 @@ describe('Login.vue', () => {
   })
 
   it('should required user and password must be success', () => {
-    const localVue = createLocalVue()
-    localVue.use(Vuelidate)
-
-    const wrapper = shallowMount(Login, {
+    const wrapper = mount(Login, {
       localVue
     })
     const userInput = wrapper.find('#userId')

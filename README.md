@@ -64,3 +64,6 @@ docker pull node:10-alpine
 docker pull mysql:5.7
 docker pull mongo
 ```
+
+npm install --save bootstrap-vue
+npm install --save bootstrap
