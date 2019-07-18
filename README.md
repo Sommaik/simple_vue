@@ -67,3 +67,7 @@ docker pull mongo
 
 npm install --save bootstrap-vue
 npm install --save bootstrap
+
+#
+
+https://github.com/Sommaik/simpleadminapi

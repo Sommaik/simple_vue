@@ -21,13 +21,14 @@
 </template>
 
 <script>
-import { required } from "vuelidate/lib/validators";
+import { required } from 'vuelidate/lib/validators'
+import axios from 'axios'
 export default {
-  data() {
+  data () {
     return {
-      userId: "",
-      password: ""
-    };
+      userId: '',
+      password: ''
+    }
   },
   validations: {
     userId: {
@@ -38,16 +39,25 @@ export default {
     }
   },
   methods: {
-    onLoginSubmit: function() {
-      console.log(this.$v);
+    onLoginSubmit: function () {
+      console.log(this.$v)
       if (!this.$v.$invalid) {
-        alert("Valid form");
+        axios.post("http://localhost:3000/login", { 
+          userId : this.userId, 
+          password: this.password
+        }).then(
+          response => {
+            alert("login success");
+          }
+        ).catch( reason => {
+           alert("error");
+        })
       } else {
-        alert("invalid");
+        alert('invalid')
       }
     }
   }
-};
+}
 </script>
 
 <style>
