@@ -3,18 +3,20 @@ const AuthStore = {
   namespaced: true,
   state: {},
   actions: {
-    login: function (payload) {
-      axios
-        .post(process.env.VUE_APP_API_URL + '/login', {
-          userId: payload.userId,
-          password: payload.password
-        })
-        .then(response => {
-          return Promise.resolve(response.data)
-        })
-        .catch(reason => {
-          return Promise.reject(reason)
-        })
+    login: function (context, payload) {
+      return new Promise((resolve, reject) => {
+        axios
+          .post(process.env.VUE_APP_API_URL + '/login', {
+            userId: payload.userId,
+            password: payload.password
+          })
+          .then(response => {
+            resolve(response.data)
+          })
+          .catch(reason => {
+            reject(reason)
+          })
+      })
     }
   }
 }

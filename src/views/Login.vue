@@ -42,16 +42,16 @@ export default {
     ...mapActions('auth', ['login']),
     onLoginSubmit: function () {
       if (!this.$v.$invalid) {
-        this.login({ 
-          useId: this.userId, 
-          passpord: this.password 
-        }).then( response => {
-          if(response.success) {
-            alert('login success');
-          }else {
-            alert('login fail');
+        this.login({
+          useId: this.userId,
+          passpord: this.password
+        }).then(response => {
+          if (response.success) {
+            alert('login success')
+          } else {
+            alert('login fail')
           }
-        });
+        })
       } else {
         alert('invalid')
       }
