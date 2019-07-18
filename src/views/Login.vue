@@ -1,6 +1,6 @@
 <template>
   <b-container>
-    <b-form @submit="onLoginSubmit">
+    <b-form @submit.stop.prevent="onLoginSubmit">
       <b-form-group label="user id">
         <b-form-input
           id="userId"
