@@ -17,6 +17,7 @@
       </b-form-group>
       <b-button type="submit" variant="primary">Login</b-button>
     </b-form>
+    <b-button variant="link" @click="onRegisterClick">Register new user</b-button>
   </b-container>
 </template>
 
@@ -55,7 +56,10 @@ export default {
       } else {
         alert('invalid')
       }
-    }
+    },
+    onRegisterClick() {
+      this.$router.push({path: '/register'});
+    } 
   }
 }
 </script>
