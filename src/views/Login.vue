@@ -42,15 +42,19 @@ export default {
     onLoginSubmit: function () {
       console.log(this.$v)
       if (!this.$v.$invalid) {
-        axios.post("http://localhost:3000/login", { 
-          userId : this.userId, 
+        axios.post(process.env.VUE_APP_API_URL + '/login', {
+          userId: this.userId,
           password: this.password
         }).then(
           response => {
-            alert("login success");
+            if (response.data.success) {
+              alert('login success')
+            } else {
+              alert('login fail')
+            }
           }
-        ).catch( reason => {
-           alert("error");
+        ).catch(reason => {
+          alert('error')
         })
       } else {
         alert('invalid')
