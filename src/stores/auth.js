@@ -1,7 +1,16 @@
 import axios from 'axios'
 const AuthStore = {
   namespaced: true,
-  state: {},
+  state: {
+    token: '',
+    name: ''
+  },
+  mutations: {
+    loginSuccess (state, payload) {
+      state.token = payload.token
+      state.name = payload.name
+    }
+  },
   actions: {
     login: function (context, payload) {
       return new Promise((resolve, reject) => {
