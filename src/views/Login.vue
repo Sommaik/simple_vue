@@ -22,7 +22,7 @@
 
 <script>
 import { required } from 'vuelidate/lib/validators'
-import axios from 'axios'
+import { mapActions } from 'vuex'
 export default {
   data () {
     return {
@@ -39,23 +39,19 @@ export default {
     }
   },
   methods: {
+    ...mapActions('auth', ['login']),
     onLoginSubmit: function () {
-      console.log(this.$v)
       if (!this.$v.$invalid) {
-        axios.post(process.env.VUE_APP_API_URL + '/login', {
-          userId: this.userId,
-          password: this.password
-        }).then(
-          response => {
-            if (response.data.success) {
-              alert('login success')
-            } else {
-              alert('login fail')
-            }
+        this.login({ 
+          useId: this.userId, 
+          passpord: this.password 
+        }).then( response => {
+          if(response.success) {
+            alert('login success');
+          }else {
+            alert('login fail');
           }
-        ).catch(reason => {
-          alert('error')
-        })
+        });
       } else {
         alert('invalid')
       }
