@@ -20,6 +20,7 @@ const AuthStore = {
             password: payload.password
           })
           .then(response => {
+            context.commit('loginSuccess', response.data)
             resolve(response.data)
           })
           .catch(reason => {
