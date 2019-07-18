@@ -17,6 +17,19 @@ const AuthStore = {
             reject(reason)
           })
       })
+    },
+
+    register (context, payload) {
+      return new Promise((resolve, reject) => {
+        axios
+          .post(process.env.VUE_APP_API_URL + '/user', payload)
+          .then(response => {
+            resolve(response.data)
+          })
+          .catch(reason => {
+            reject(reason)
+          })
+      })
     }
   }
 }
