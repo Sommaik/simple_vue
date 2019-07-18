@@ -70,11 +70,11 @@ export default {
         ...mapActions('auth', ['register']),
         onRegisterSubmit() {
             this.register(this.form).then( result => {
-                this.router.replace({path: '/login'});
+                this.$router.replace({path: '/login'});
             });
         },
         onBackClick() {
-            this.router.replace({path: '/login'});
+            this.$router.replace({path: '/login'});
         }
     }
 }
