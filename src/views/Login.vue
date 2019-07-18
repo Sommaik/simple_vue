@@ -43,8 +43,8 @@ export default {
     onLoginSubmit: function () {
       if (!this.$v.$invalid) {
         this.login({
-          useId: this.userId,
-          passpord: this.password
+          userId: this.userId,
+          password: this.password
         }).then(response => {
           if (response.success) {
             alert('login success')
