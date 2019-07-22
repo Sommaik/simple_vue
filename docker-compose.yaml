@@ -1,0 +1,20 @@
+version: '3'
+services:
+  nodejest:
+    image: sommaik/nodejest
+    container_name: nodejest
+    networks:
+      - simple_net
+    deploy:
+      replicas: 2
+  simplevue:
+    image: sommaik/simplevue
+    container_name: simplevue
+    networks:
+      - simple_net
+    ports:
+      - 80:80
+    deploy:
+      replicas: 2
+networks:
+  simple_net:

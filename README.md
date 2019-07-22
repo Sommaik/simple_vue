@@ -73,3 +73,5 @@ npm install --save bootstrap
 https://github.com/Sommaik/simpleadminapi
 
 https://github.com/Sommaik/simplevue
+
+docker build -t simplevue -t sommaik/simplevue:1.2 -t sommaik/simplevue:latest .
